@@ -4,7 +4,7 @@
   "title": "Riot Global ID Introspection",
   "description": "Introspect Global ID retrieved from the Riot platform",
   "icon": "command-icon.png",
-  "author": "Pierre-Yves Lebecq",
+  "author": "pierre-yves",
   "categories": [
     "Developer Tools"
   ],
