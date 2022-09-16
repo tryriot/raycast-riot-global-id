@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@raycast/api": "^1.39.3",
-    "@tryriot/global-id": "^0.0.3"
+    "@tryriot/global-id": "^0.0.8"
   },
   "devDependencies": {
     "@types/node": "~16.10.0",
