@@ -22,7 +22,7 @@
     "@tryriot/global-id": "^0.0.8"
   },
   "devDependencies": {
-    "@types/node": "~16.10.0",
+    "@types/node": "~18.14.6",
     "@types/react": "^17.0.28",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.0.0",
