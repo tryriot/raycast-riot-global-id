@@ -23,7 +23,7 @@ export default function Command() {
       globalIdFromUUID = v1(type as ObjectType, uuid).toString();
     }
   } catch (error) {
-    globalIdFromUUID = "Not a uuid";
+    globalIdFromUUID = "Not an uuid";
   }
 
   function handleGlobalIdChanged(newValue: string) {
