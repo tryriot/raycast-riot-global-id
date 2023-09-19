@@ -10,6 +10,8 @@ export default function Command() {
 
   function handleGlobalIdChanged(newValue: string) {
     if (newValue.length === 0) {
+      setObjectType(undefined);
+      setObjectId(undefined);
       setGlobalIdError(undefined);
       return;
     }
