@@ -49,12 +49,7 @@ export default function Command() {
           </ActionPanel>
         }
       >
-        <Form.Dropdown
-          id="type"
-          title="Object Type"
-          placeholder="Choose a Type"
-          onChange={handleTypeChanged}
-        >
+        <Form.Dropdown id="type" title="Object Type" placeholder="Choose a Type" onChange={handleTypeChanged}>
           {types.map(({ number, value }) => {
             return <Form.Dropdown.Item key={number} value={value} title={`${value} (${number.toString()})`} />;
           })}

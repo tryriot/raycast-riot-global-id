@@ -1,26 +1,36 @@
 import { Form, ActionPanel, Action, Clipboard, showHUD } from "@raycast/api";
-import { GlobalIdInterface, parse } from "@tryriot/global-id";
+import { parse } from "@tryriot/global-id";
 import { useState } from "react";
 
 export default function Command() {
-  const [globalId, setGlobalId] = useState("");
+  const [globalIdError, setGlobalIdError] = useState<Error>();
 
-  let parsedGlobalId: GlobalIdInterface | undefined;
-  let objectType: string | undefined;
-  let objectId: string | undefined;
-
-  try {
-    const result = parse(globalId);
-    parsedGlobalId = result.into();
-    objectType = parsedGlobalId?.type;
-    objectId = parsedGlobalId?.value;
-  } catch (err) {
-    // Do nothing
-  }
-
+  const [objectType, setObjectType] = useState<string>();
+  const [objectId, setObjectId] = useState<string>();
 
   function handleGlobalIdChanged(newValue: string) {
-    setGlobalId(newValue);
+    if (newValue.length === 0) {
+      setGlobalIdError(undefined);
+      return;
+    }
+
+    try {
+      const result = parse(newValue);
+      if (result.isOk()) {
+        const unwrapped = result.unwrap();
+        setObjectType(unwrapped.type);
+        setObjectId(unwrapped.id);
+        setGlobalIdError(undefined);
+      } else {
+        setObjectType(undefined);
+        setObjectId(undefined);
+        setGlobalIdError(new Error("Wrong Global ID format"));
+      }
+    } catch (err) {
+      setObjectType(undefined);
+      setObjectId(undefined);
+      setGlobalIdError(new Error("Wrong Global ID format"));
+    }
   }
 
   async function handleCopyObjectId() {
@@ -50,7 +60,8 @@ export default function Command() {
         <Form.TextField
           id="globalId"
           title="Global ID"
-          placeholder="Enter a Global ID"
+          placeholder="QI3FFpMnX5DDpvMj4qc4goZ"
+          error={globalIdError?.message}
           onChange={handleGlobalIdChanged}
         />
         <Form.Description title="Object Type" text={objectType || "-"} />
