@@ -1,4 +1,4 @@
-import { Form, ActionPanel, Action, Clipboard, showHUD } from "@raycast/api";
+import { Form, ActionPanel, Action, Clipboard, showHUD, Icon } from "@raycast/api";
 import { useCachedState } from "@raycast/utils";
 import { TYPES_MAP, ObjectType } from "@tryriot/global-id";
 import { create } from "@tryriot/global-id";
@@ -43,7 +43,7 @@ export default function Command() {
       <Form
         actions={
           <ActionPanel>
-            <Action title="Copy GlobalId" onAction={handleCopyGlobalId} />
+            <Action title="Copy GlobalId" icon={Icon.Clipboard} onAction={handleCopyGlobalId} />
           </ActionPanel>
         }
       >
