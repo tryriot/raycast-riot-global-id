@@ -1,24 +1,26 @@
 import { Form, ActionPanel, Action, Clipboard, showHUD } from "@raycast/api";
+import { useCachedState } from "@raycast/utils";
 import { TYPES_MAP, ObjectType } from "@tryriot/global-id";
 import { create } from "@tryriot/global-id";
 import { useState } from "react";
 
 export default function Command() {
   const [uuid, setUUID] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useCachedState<string | undefined>("last-used-object-type", undefined);
 
   const types = Array.from(TYPES_MAP, ([number, value]) => ({ number, value })).sort((a, b) =>
     a.value > b.value ? 1 : b.value > a.value ? -1 : 0
   );
 
-  let globalIdFromUUID = "";
+  let globalIdFromUUID: string | undefined = undefined;
+  let uuidError: Error | undefined = undefined;
 
   try {
     if (type && uuid) {
       globalIdFromUUID = create(type as ObjectType, uuid).toString();
     }
-  } catch (error) {
-    globalIdFromUUID = "Not an uuid";
+  } catch (err) {
+    uuidError = new Error('Wrong UUID format');
   }
 
   function handleUUIDChanged(newValue: string) {
@@ -44,7 +46,6 @@ export default function Command() {
             <Action
               title="Copy GlobalId"
               onAction={handleCopyGlobalId}
-              shortcut={{ modifiers: ["cmd"], key: "delete" }}
             />
           </ActionPanel>
         }
@@ -55,7 +56,7 @@ export default function Command() {
           })}
         </Form.Dropdown>
 
-        <Form.TextField id="uuid" title="Object ID" placeholder="Enter an Object ID" onChange={handleUUIDChanged} />
+        <Form.TextField id="uuid" title="Object ID" placeholder="56717c31-9b5a-4678-8c77-e7a62fde350c" error={uuidError?.message} onChange={handleUUIDChanged} />
 
         <Form.Description title="Global ID" text={globalIdFromUUID || "-"} />
       </Form>
