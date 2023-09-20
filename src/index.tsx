@@ -3,36 +3,27 @@ import { parse } from "@tryriot/global-id";
 import { useState } from "react";
 
 export default function Command() {
-  const [globalIdError, setGlobalIdError] = useState<Error>();
+  const [globalId, setGlobalId] = useState("");
 
-  const [objectType, setObjectType] = useState<string>();
-  const [objectId, setObjectId] = useState<string>();
+  let globalIdError: Error | undefined = undefined;
+  let objectType: string | undefined = undefined;
+  let objectId: string | undefined = undefined;
+
+  if (globalId) {
+    try {
+      const result = parse(globalId);
+      const { type, id } = result.unwrap();
+      objectType = type;
+      objectId = id;
+    } catch (err) {
+      objectType = undefined;
+      objectId = undefined;
+      globalIdError = new Error("Wrong Global ID format");
+    }
+  }
 
   function handleGlobalIdChanged(newValue: string) {
-    if (newValue.length === 0) {
-      setObjectType(undefined);
-      setObjectId(undefined);
-      setGlobalIdError(undefined);
-      return;
-    }
-
-    try {
-      const result = parse(newValue);
-      if (result.isOk()) {
-        const unwrapped = result.unwrap();
-        setObjectType(unwrapped.type);
-        setObjectId(unwrapped.id);
-        setGlobalIdError(undefined);
-      } else {
-        setObjectType(undefined);
-        setObjectId(undefined);
-        setGlobalIdError(new Error("Wrong Global ID format"));
-      }
-    } catch (err) {
-      setObjectType(undefined);
-      setObjectId(undefined);
-      setGlobalIdError(new Error("Wrong Global ID format"));
-    }
+    setGlobalId(newValue);
   }
 
   async function handleCopyObjectId() {
