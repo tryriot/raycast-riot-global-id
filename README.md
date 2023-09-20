@@ -5,8 +5,8 @@ Introspect and generate Global ID retrieved from the Riot platform.
 ## Install the extension
 
 1. Checkout this repository
-2. `npm install && npm run build`
-3. Open Raycast > "Import extension"
+2. `npm install && npm run build:local`
+3. Open Raycast > "Import extension" and select the `dist` directory inside the project folder.
 
 ## Contribute
 

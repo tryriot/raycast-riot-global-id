@@ -38,10 +38,12 @@
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "prettier": "^2.8.7",
+    "rimraf": "^5.0.1",
     "typescript": "^5.0.4"
   },
   "scripts": {
     "build": "ray build -e dist",
+    "build:local": "rimraf dist && ray build -e dist -o dist/",
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint"
