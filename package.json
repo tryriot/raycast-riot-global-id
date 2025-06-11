@@ -28,7 +28,7 @@
   "dependencies": {
     "@raycast/api": "^1.85.2",
     "@raycast/utils": "^1.18.0",
-    "@tryriot/global-id": "^0.0.39"
+    "@tryriot/global-id": "1.0.0-beta.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -50,5 +50,6 @@
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint"
-  }
+  },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }

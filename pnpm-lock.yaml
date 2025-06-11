@@ -15,8 +15,8 @@ importers:
         specifier: ^1.18.0
         version: 1.18.0(@raycast/api@1.85.2(@types/node@20.8.10)(@types/react@18.3.3))
       '@tryriot/global-id':
-        specifier: ^0.0.39
-        version: 0.0.39
+        specifier: 1.0.0-beta.0
+        version: 1.0.0-beta.0
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.2.0
@@ -147,9 +147,9 @@ packages:
     peerDependencies:
       '@raycast/api': '>=1.69.0'
 
-  '@tryriot/global-id@0.0.39':
-    resolution: {integrity: sha512-hrHlK5t7HWqqzFYQr3OwwiIDWPVnC4YlV5c5eOU41aKCDrEH3FtuWNxdLDBcoyHkYyi/Qvz41cxI1wtpySYLoA==, tarball: https://npm.pkg.github.com/download/@tryriot/global-id/0.0.39/6ec21db9ce4a032eeee76554b4893cf9f67b4523}
-    engines: {node: '>=16.10'}
+  '@tryriot/global-id@1.0.0-beta.0':
+    resolution: {integrity: sha512-HTYpnRMnFZ1Nr8rNC+tnasymeOIY9f6FGluEAT+xhCnetbX31S5t6Nmv7MFSDIrJtnzWvOjWQWNGks4fG6ikCw==, tarball: https://npm.pkg.github.com/download/@tryriot/global-id/1.0.0-beta.0/3fa89dc9fc947cacb16f7506e0df2421a6c6ac31}
+    engines: {node: '>=18'}
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -258,8 +258,8 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  base-x@4.0.0:
-    resolution: {integrity: sha512-FuwxlW4H5kh37X/oW59pwTzzTKRzfrrQwhmyspRM7swOEZcHtDZSCt45U6oKgtuFE+WYPblePMVIPR4RZrh/hw==}
+  base-x@5.0.1:
+    resolution: {integrity: sha512-M7uio8Zt++eg3jPj+rHMfCC+IuygQHHCOU+IYsVtik6FWjuYpVt/+MRKcgsAMHh8mMFAwnB+Bs+mTrFiXjMzKg==}
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -707,8 +707,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  uuid@8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
   webidl-conversions@3.0.1:
@@ -832,11 +832,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@tryriot/global-id@0.0.39':
+  '@tryriot/global-id@1.0.0-beta.0':
     dependencies:
-      base-x: 4.0.0
+      base-x: 5.0.1
       oxide.ts: 1.1.0
-      uuid: 8.3.2
+      uuid: 11.1.0
 
   '@types/estree@1.0.6': {}
 
@@ -961,7 +961,7 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
-  base-x@4.0.0: {}
+  base-x@5.0.1: {}
 
   brace-expansion@1.1.11:
     dependencies:
@@ -1373,7 +1373,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  uuid@8.3.2: {}
+  uuid@11.1.0: {}
 
   webidl-conversions@3.0.1: {}
 
