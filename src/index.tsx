@@ -15,7 +15,7 @@ export default function Command() {
       const { type, id } = result.unwrap();
       objectType = type;
       objectId = id;
-    } catch (err) {
+    } catch {
       objectType = undefined;
       objectId = undefined;
       globalIdError = new Error("Wrong Global ID format");
