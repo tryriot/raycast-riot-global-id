@@ -9,7 +9,7 @@ export default function Command() {
   const [type, setType] = useCachedState("last-used-object-type", "");
 
   const types = Array.from(TYPES_MAP, ([number, value]) => ({ number, value })).sort((a, b) =>
-    a.value > b.value ? 1 : b.value > a.value ? -1 : 0
+    a.value > b.value ? 1 : b.value > a.value ? -1 : 0,
   );
 
   let globalIdFromUUID: string | undefined = undefined;
@@ -19,7 +19,7 @@ export default function Command() {
     if (type && uuid) {
       globalIdFromUUID = create(type as ObjectType, uuid).toString();
     }
-  } catch (err) {
+  } catch {
     uuidError = new Error("Wrong UUID format");
   }
 
