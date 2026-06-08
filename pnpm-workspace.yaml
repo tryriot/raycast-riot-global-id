@@ -1,0 +1,10 @@
+strictPeerDependencies: false
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - '@tryriot/*'
+savePrefix: ''
+blockExoticSubdeps: true
+trustPolicy: 'no-downgrade'
+pmOnFail: error
+allowBuilds:
+  esbuild: true
