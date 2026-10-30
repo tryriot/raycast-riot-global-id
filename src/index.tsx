@@ -1,9 +1,27 @@
-import { Form, ActionPanel, Action, Clipboard, showHUD, Icon } from "@raycast/api";
+import { Form, ActionPanel, Action, Clipboard, showHUD, Icon, LaunchProps } from "@raycast/api";
 import { parse } from "@tryriot/global-id";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function Command() {
-  const [globalId, setGlobalId] = useState("");
+interface Arguments {
+  globalId?: string;
+}
+
+export default function Command({ arguments: args }: LaunchProps<{ arguments: Arguments }>) {
+  const [globalId, setGlobalId] = useState(args.globalId || "");
+
+  // Auto-copy when arguments provided and valid
+  useEffect(() => {
+    if (args.globalId) {
+      try {
+        const result = parse(args.globalId);
+        const { id } = result.unwrap();
+        Clipboard.copy(id);
+        showHUD("Object ID copied to clipboard");
+      } catch {
+        // If invalid, just show the form
+      }
+    }
+  }, [args.globalId]);
 
   let globalIdError: Error | undefined = undefined;
   let objectType: string | undefined = undefined;
@@ -45,8 +63,12 @@ export default function Command() {
       <Form
         actions={
           <ActionPanel>
-            <Action title="Copy Object ID" icon={Icon.Clipboard} onAction={handleCopyObjectId} />
-            <Action title="Copy Object Type" icon={Icon.Clipboard} onAction={handleCopyObjectType} />
+            {objectId ? (
+              <Action title="Copy Object ID" icon={Icon.Clipboard} onAction={handleCopyObjectId} />
+            ) : null}
+            {objectType ? (
+              <Action title="Copy Object Type" icon={Icon.Clipboard} onAction={handleCopyObjectType} />
+            ) : null}
           </ActionPanel>
         }
       >
@@ -54,6 +76,7 @@ export default function Command() {
           id="globalId"
           title="Global ID"
           placeholder="QI3FFpMnX5DDpvMj4qc4goZ"
+          value={globalId}
           error={globalIdError?.message}
           onChange={handleGlobalIdChanged}
         />

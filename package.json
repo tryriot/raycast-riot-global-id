@@ -15,14 +15,36 @@
       "title": "Introspect Global ID",
       "subtitle": "Riot",
       "description": "Introspect a Riot Global ID to retrieve the underlying object type and ID.",
-      "mode": "view"
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "globalId",
+          "placeholder": "Global ID",
+          "type": "text",
+          "required": true
+        }
+      ]
     },
     {
       "name": "generate",
       "title": "Generate Global ID",
       "subtitle": "Riot",
       "description": "Generate a Riot Global ID from an object type and ID",
-      "mode": "view"
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "objectType",
+          "placeholder": "Object Type",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "objectId",
+          "placeholder": "Object ID/UUID",
+          "type": "text",
+          "required": true
+        }
+      ]
     }
   ],
   "dependencies": {
